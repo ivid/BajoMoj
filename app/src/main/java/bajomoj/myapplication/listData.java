@@ -79,9 +79,6 @@ public class listData implements Parcelable, Serializable {
     public  Integer getRepeatInterval(Integer repeatInterval) {
         return  repeatInterval;
     }
-    /*public String getRepeatIntervalToString() {
-        return repeatInterval.toString();
-    }*/
     public void  setRepeatInterval(Integer repeatInterval) {
         this.repeatInterval = repeatInterval;
     }
@@ -90,9 +87,6 @@ public class listData implements Parcelable, Serializable {
     public Integer getRadius() {
         return radius;
     }
-    /*public String getRadiusToString() {
-        return radius.toString();
-    }*/
     public void setRadius() {
         this.radius = radius;
     }
@@ -102,39 +96,16 @@ public class listData implements Parcelable, Serializable {
      //parcelable part
 
     public listData(Parcel read) {
-       /* String [] data = new String[6];
-        in.readStringArray(data);
-
-        this.active = Boolean.valueOf(data[0]);
-        this.location = data[1];
-        this.description = data[2];
-        this.depArr = DepArr.valueOf(data[3]);
-        this.repeatInterval = Integer.parseInt(data[4]);
-        this.radius = Integer.parseInt(data[5]);*/
-
 
         this.active = read.readByte() != 0;
         this.location = read.readString();
         this.description = read.readString();
-        /*if (read.readString() == "Departure") {
-            this.depArr = DepArr.Departure;
-        }else if (read.readString() == "Arrival") {
-            this.depArr = DepArr.Arrival;
-        } else {
-            this.depArr = DepArr.gay;
-        }*/
         this.choose = read.readInt();
         this.dateTime = read.readString();
-        /*this.repeatInterval = Integer.parseInt(read.readString());//parse radi vracanja u primitivni int
-        this.radius = Integer.parseInt(read.readString());//parse radi vracanja u primitivni int*/
         this.repeatInterval = read.readInt();
         this.radius = read.readInt();
-
-
-
-
-
     }
+
     @Override
     public int describeContents() {
         return 0;
@@ -148,8 +119,6 @@ public class listData implements Parcelable, Serializable {
         dest.writeString(description);
         dest.writeInt(choose);
         dest.writeString(dateTime);
-        /*dest.writeString(getRepeatIntervalToString());
-        dest.writeString(getRadiusToString());*/
         dest.writeInt(repeatInterval);
         dest.writeInt(radius);
 
@@ -159,18 +128,6 @@ public class listData implements Parcelable, Serializable {
 
     }
 
-    /*@Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{
-                this.active.toString(),
-                this.location,
-                this.descrption,
-                this.depArr.toString(),
-                String.valueOf(this.repeatInterval),
-                String.valueOf(this.radius)
-        });
-
-    }*/
 
     public static  final Parcelable.Creator<listData> CREATOR = new Parcelable.Creator<listData>() {
 

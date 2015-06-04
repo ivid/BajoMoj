@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class myParcelable implements Parcelable {
 
-    //private List<listData> myListdata = new ArrayList<listData>();
     private ArrayList<listData> myListdata;
 
     myParcelable() {
@@ -32,7 +31,6 @@ public class myParcelable implements Parcelable {
 
     public myParcelable(Parcel in) {
         this();
-        //myListdata = new ArrayList<listData>();
         in.readTypedList(myListdata, listData.CREATOR);
 
     }
@@ -44,7 +42,6 @@ public class myParcelable implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        //dest.writeInt(myListdata.size());
         dest.writeTypedList(myListdata);
     }
 

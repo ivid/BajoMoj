@@ -30,7 +30,7 @@ public class AddActivity extends Activity {
     public enum DepArr {Departure, Arrival}
     DepArr depArr;
     Integer choose;
-    String dateTime = "01/23/1990 12:12:12";
+    String dateTime = "01/23/1990 12:12:11";
     private int  repeatInterval = 40; //samo za probu
     private int radius = 100; //samo za probu
     ArrayList<listData> myListdata = new ArrayList<listData>();
@@ -45,7 +45,7 @@ public class AddActivity extends Activity {
         setContentView(R.layout.add_item_view);
 
         Bundle b = getIntent().getExtras();
-        /*myParcelable object = b.getParcelable("parcel");
+        /*myParcelable object = b.getParcelable("parcel"); ZA DOBITI CIJELU LISTU
         myListdata = object.getMyListdata();*/
 
 
@@ -112,10 +112,8 @@ public class AddActivity extends Activity {
 
             if (parent.getItemAtPosition(position).toString() == "Departure") {
                 choose = 0;
-                //Toast.makeText(getApplicationContext(), "Departure prvi", Toast.LENGTH_SHORT).show();
             } else if (parent.getItemAtPosition(position).toString() == "Arrival") {
                choose = 1;
-                //Toast.makeText(getApplicationContext(), "Arrival drugi", Toast.LENGTH_SHORT).show();
             }
             else {
                 Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString() +"treci", Toast.LENGTH_SHORT).show();
@@ -135,14 +133,13 @@ public class AddActivity extends Activity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.saveButton: {
+                    //SLANJE CIJELE LISTE
                     /*myListdata.add(new listData(active, location, description, choose, repeatInterval, radius));
 
                     myParcelable object = new myParcelable();
                     object.setMyListdata(myListdata);
                     Intent mainActivityIntent = new Intent(AddActivity.this, MainActivity.class);
-                    /*mainActivityIntent.putExtra("list", new listData
-                            (active,location,descrption,choice1,repeatInterval,radius ));*/
-                    /*mainActivityIntent.putExtra("parcel", object);
+                    mainActivityIntent.putExtra("parcel", object);
                     setResult(RESULT_OK,mainActivityIntent);
                     finish();*/
 

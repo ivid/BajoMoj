@@ -61,8 +61,7 @@ public class MainActivity extends Activity {
 
         readFromFileCheck = true;
 
-        //if (readFromFileCheck) {
-            //Toast.makeText(getApplicationContext(), "pocetak reada", Toast.LENGTH_SHORT).show();
+
             FileInputStream fileInputStream;
             ObjectInputStream objectInputStream = null;
             try {
@@ -70,7 +69,6 @@ public class MainActivity extends Activity {
                 fileInputStream = getApplicationContext().openFileInput(FILENAME);
                 objectInputStream = new ObjectInputStream(fileInputStream);
                 size = (int) objectInputStream.readInt();
-                //Toast.makeText(getApplicationContext(), "kraj reada", Toast.LENGTH_SHORT).show();
                 for (int counter = 0; counter < size; counter++) {
                     myListdata.add((listData) objectInputStream.readObject());
                 }
@@ -81,7 +79,6 @@ public class MainActivity extends Activity {
             } catch (StreamCorruptedException e1) {
                 e1.printStackTrace();
             } catch (NotSerializableException e1) {
-                //Toast.makeText(getApplicationContext(), "kraj reada", Toast.LENGTH_SHORT).show();
             } catch (IOException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
@@ -95,9 +92,7 @@ public class MainActivity extends Activity {
                     }
                 }
             }
-        /*} else {
-            readFromFileCheck = true;
-        }*/
+
     }
 
     /*@Override
@@ -110,7 +105,7 @@ public class MainActivity extends Activity {
         if (requestCode==1) {
             if (resultCode == RESULT_OK) {
                 Bundle b = data.getExtras();
-                /*myParcelable object = b.getParcelable("parcel");
+                /*myParcelable object = b.getParcelable("parcel");  KAKO DOBITI CIJELU LISTU
                 myListdata = object.getMyListdata();*/
                 listData object = b.getParcelable("parcel");
                 myListdata.add(object);
@@ -127,9 +122,6 @@ public class MainActivity extends Activity {
         super.onResume();
 
         populateListView();
-        //myListdata = sortArray();
-
-
     }
 
     /*@Override
@@ -147,7 +139,6 @@ public class MainActivity extends Activity {
                 outStream = getApplicationContext().openFileOutput(FILENAME, Context.MODE_PRIVATE);
                 objectOutputStream = new ObjectOutputStream(outStream);
                 objectOutputStream.writeInt(myListdata.size());
-                //objectOutputStream.writeInt(3);
                 objectOutputStream.flush();
                 for (listData oneData : myListdata) {
                     objectOutputStream.writeObject(oneData);
@@ -178,7 +169,7 @@ public class MainActivity extends Activity {
             myListdata.add(new listData(true, "Vukovarska 58", "Predati izvješće", choice1, 5, 100));
             myListdata.add(new listData(false,"Krešimirova 18", "Kupiti  pokaznu", choice1, 10, 30));
             myListdata.add(new listData(true, "Bartola Kašića 5/4", "Vratiti  knjigu", choice2, 1, 60));
-        }*/
+        } INITAL DATA TEST */
 
         private void populateListView() {
             Collections.sort(myListdata, new listComparator());
@@ -207,7 +198,7 @@ public class MainActivity extends Activity {
                         populateListView();
                     }
 
-
+                   //CHECKBOX DIO KOJI TREBA DOVRSITI
                    /*if (view.getId() == R.id.checkBox) {
                         Toast.makeText(getApplicationContext(), clickedItem.getActive().toString(), Toast.LENGTH_SHORT).show();
                         if (clickedItem.getActive()) {
@@ -244,7 +235,7 @@ public class MainActivity extends Activity {
 
                 CheckBox activeCheckBox = (CheckBox) itemView.findViewById(R.id.checkBox);
                 activeCheckBox.setChecked(currentData.getActive());
-                //activeCheckBox.setOnClickListener((OnClickListener) this);
+                //activeCheckBox.setOnClickListener((OnClickListener) this); CHEKBOX IO KOJI TREBA DOVRSIIT
 
 
                /* if (currentData.getDepArr() == 0) {
@@ -273,7 +264,7 @@ public class MainActivity extends Activity {
 
         OnClickListener addLayoutHandler = new OnClickListener() {
             public void onClick(View v) {
-
+                //ZA POSLATI CIJELU LISTU
                /* myParcelable object = new myParcelable();
                 object.setMyListdata(myListdata);
 
@@ -288,34 +279,11 @@ public class MainActivity extends Activity {
             }
         };
 
-      public ArrayList<listData> sortArray() {
-        /*for (int counter=1; counter<myListdata.size() -1; counter++ ) {
-            int currentData = counter;
-            int oneBeforeCurrentData = counter-1;
-            Boolean mustBe = true;
-            while ((oneBeforeCurrentData >= 0) && (mustBe)){
-                if (((myListdata.get(currentData).getActive() == false) && (myListdata.get(oneBeforeCurrentData).getActive() == false)) || ((myListdata.get(currentData).getActive() == true) && (myListdata.get(oneBeforeCurrentData).getActive() == true))) {
-                     /*if () {   //za napraviti
-                         temporary = myListdata.get(currentData);
-                         myListdata.add(currentData, myListdata.get(oneBeforeCurrentData));
-                         myListdata.add(oneBeforeCurrentData, temporary);
-                         mustBe = true;
-
-                     }*/
-                /*} else if ((myListdata.get(currentData).getActive() == true) && (myListdata.get(oneBeforeCurrentData).getActive() == false)) {
-                    Toast.makeText(getApplicationContext(), "poceo je sort", Toast.LENGTH_SHORT).show();
-                    temporary = myListdata.get(currentData);
-                    myListdata.set(currentData, myListdata.get(oneBeforeCurrentData));
-                    myListdata.set(oneBeforeCurrentData, temporary);
-                    mustBe = true;
-                }
-
-        }*/
 
 
 
-        return myListdata;
-    };
+
+
 
 
     public Boolean deleteItem(Integer index) {
@@ -325,7 +293,7 @@ public class MainActivity extends Activity {
         catch(Exception e) {
             return false;
         }
-        sortArray();
+        Collections.sort(myListdata, new listComparator());
         return true;
     };
 
