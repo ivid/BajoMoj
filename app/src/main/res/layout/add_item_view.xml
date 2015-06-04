@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/headline"
+        android:text="Add new reminder"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_active"
+        android:text="Acive"
+        android:layout_below="@+id/headline"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/activeCheckBox"
+        android:layout_alignTop="@+id/text_active"
+        android:layout_toEndOf="@+id/text_active" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter reminder descriptiont"
+        android:id="@+id/text_Reminder_Description"
+        android:layout_below="@+id/activeCheckBox"
+        android:layout_toEndOf="@+id/activeCheckBox" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addDescription"
+        android:layout_below="@+id/text_Reminder_Description"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/text_Reminder_Description" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/Departue_Arrival"
+        android:layout_below="@+id/addDescription"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp" />
+
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/choseDepArr"
+        android:layout_alignTop="@+id/Departue_Arrival"
+        android:layout_alignEnd="@+id/addDescription"
+        android:layout_toEndOf="@+id/Departue_Arrival" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="106dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discard"
+        android:id="@+id/discardButton"
+        android:layout_alignTop="@+id/saveButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:id="@+id/locationButton"
+        android:layout_below="@+id/choseDepArr"
+        android:layout_alignEnd="@+id/addDescription" />
+
+
+</RelativeLayout>
